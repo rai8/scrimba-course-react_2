@@ -4,13 +4,14 @@ export default class Form extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: ""
+      firstName: "",
+      lastName: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ firstName: e.target.value });
+    this.setState({ [e.target.name]: e.target.value });
   }
   render() {
     return (
@@ -19,10 +20,20 @@ export default class Form extends Component {
         <form>
           <input
             type="text"
+            name="firstName"
             placeholder="First Name"
             onChange={this.handleChange}
           />
-          <p>{this.state.firstName}</p>
+          <br />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            onChange={this.handleChange}
+          />
+          <p>
+            {this.state.firstName} {this.state.lastName}{" "}
+          </p>
         </form>
       </div>
     );
