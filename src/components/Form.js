@@ -5,13 +5,17 @@ export default class Form extends Component {
     super();
     this.state = {
       firstName: "",
-      lastName: ""
+      lastName: "",
+      isFriendly: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+    const { name, value, type, checked } = e.target;
+    type === "checkbox"
+      ? this.setState({ [name]: checked })
+      : this.state({ [name]: value });
   }
   render() {
     return (
@@ -20,6 +24,7 @@ export default class Form extends Component {
         <form>
           <input
             type="text"
+            value={this.state.firstName}
             name="firstName"
             placeholder="First Name"
             onChange={this.handleChange}
@@ -27,10 +32,20 @@ export default class Form extends Component {
           <br />
           <input
             type="text"
+            value={this.state.lastName}
             name="lastName"
             placeholder="Last Name"
             onChange={this.handleChange}
           />
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              name="isFriendly"
+              onChange={this.handleChange}
+            />
+            Is Friendly ?
+          </label>
           <p>
             {this.state.firstName} {this.state.lastName}{" "}
           </p>
