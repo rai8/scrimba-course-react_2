@@ -15,7 +15,7 @@ export default class Form extends Component {
     const { name, value, type, checked } = e.target;
     type === "checkbox"
       ? this.setState({ [name]: checked })
-      : this.state({ [name]: value });
+      : this.setState({ [name]: value });
   }
   render() {
     return (
