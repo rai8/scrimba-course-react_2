@@ -6,7 +6,8 @@ export default class Form extends Component {
     this.state = {
       firstName: "",
       lastName: "",
-      isFriendly: ""
+      isFriendly: false,
+      gender: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -43,12 +44,36 @@ export default class Form extends Component {
               type="checkbox"
               name="isFriendly"
               onChange={this.handleChange}
+              checked={this.state.isFriendly}
             />
             Is Friendly ?
           </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              onChange={this.handleChange}
+              checked={this.state.gender === "male"}
+            />
+            Male
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              onChange={this.handleChange}
+              checked={this.state.gender === "female"}
+            />
+            Female
+          </label>{" "}
+          <br />
           <p>
             {this.state.firstName} {this.state.lastName}{" "}
           </p>
+          <p>You are {this.state.gender}</p>
         </form>
       </div>
     );
