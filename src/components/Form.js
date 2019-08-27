@@ -11,6 +11,7 @@ export default class Form extends Component {
       favColor: ""
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -19,11 +20,14 @@ export default class Form extends Component {
       ? this.setState({ [name]: checked })
       : this.setState({ [name]: value });
   }
+  handleSubmit() {
+    console.log("you have submitted the form");
+  }
   render() {
     return (
       <div>
         <h1>fill the form below</h1>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             value={this.state.firstName}
@@ -91,6 +95,7 @@ export default class Form extends Component {
           </p>
           <p>You are {this.state.gender}</p>
           <p>Your favorite color is {this.state.favColor}</p>
+          <button>SUBMIT</button>
         </form>
       </div>
     );
