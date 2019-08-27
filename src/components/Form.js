@@ -7,7 +7,8 @@ export default class Form extends Component {
       firstName: "",
       lastName: "",
       isFriendly: false,
-      gender: ""
+      gender: "",
+      favColor: ""
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -71,9 +72,25 @@ export default class Form extends Component {
           </label>{" "}
           <br />
           <p>
+            Select your favorite color :
+            <select
+              value={this.state.favColor}
+              onChange={this.handleChange}
+              name="favColor"
+            >
+              <option value="blue">Blue</option>
+              <option value="green">Green</option>
+              <option value="yellow">Yellow</option>
+              <option value="orange">Orange</option>
+              <option value="red">Red</option>
+            </select>
+          </p>
+          <br />
+          <p>
             {this.state.firstName} {this.state.lastName}{" "}
           </p>
           <p>You are {this.state.gender}</p>
+          <p>Your favorite color is {this.state.favColor}</p>
         </form>
       </div>
     );
